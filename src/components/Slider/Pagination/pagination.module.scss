@@ -1,0 +1,23 @@
+.blocks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.block {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(43, 32, 126, .6);
+    margin: 0 10px;
+    cursor: pointer;
+    transition: all .3s ease-in;
+    &:hover {
+        background: rgb(43, 32, 126);
+    }
+    &.active {
+        background: rgb(43, 32, 126);
+        pointer-events: none;
+    }
+}

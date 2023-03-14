@@ -1,10 +1,12 @@
 import React, {useMemo, useState, useEffect, useRef} from "react";
 import Slide from "./Slide/Slide";
 import Navigation from "./Navigation/Navigation";
+import Pagintaion from "./Pagination/Pagination";
 
 import styles from "./slider.module.scss"
 
 const Slider = ({sliders, slidesPreView, spaceBetween}) => {
+    
     const [isWrapperOffsetHorizontally, setIsWrapperOffsetHorizontally] = useState(0)
     const [isActiveSlide, setIsActiveSlide] = useState(0)
     const [isPrevActiveSlide, setPrevIsActiveSlide] = useState(isActiveSlide)
@@ -16,9 +18,11 @@ const Slider = ({sliders, slidesPreView, spaceBetween}) => {
     
     const handleSlides = () => {
         if(isPrevActiveSlide < isActiveSlide) {
-            setIsWrapperOffsetHorizontally(slidesPreView > 1 ? isWrapperOffsetHorizontally - isSlideWidth - (spaceBetween / 2) : isWrapperOffsetHorizontally - isSlideWidth - spaceBetween)
+            console.log(isPrevActiveSlide, isActiveSlide)
+            setIsWrapperOffsetHorizontally(slidesPreView > 1 ? isWrapperOffsetHorizontally - (isSlideWidth * (isActiveSlide - isPrevActiveSlide)) - (spaceBetween / 2) : isWrapperOffsetHorizontally - isSlideWidth - spaceBetween)
         } else if (isPrevActiveSlide > isActiveSlide) {
-            setIsWrapperOffsetHorizontally(slidesPreView > 1 ? isWrapperOffsetHorizontally + isSlideWidth + (spaceBetween / 2) : isWrapperOffsetHorizontally + isSlideWidth + spaceBetween)
+            console.log(isPrevActiveSlide, isActiveSlide)
+            setIsWrapperOffsetHorizontally(slidesPreView > 1 ? isWrapperOffsetHorizontally + (isSlideWidth * (isPrevActiveSlide - isActiveSlide)) + (spaceBetween / 2) : isWrapperOffsetHorizontally + isSlideWidth + spaceBetween)
         }
     }
 
@@ -63,6 +67,7 @@ const Slider = ({sliders, slidesPreView, spaceBetween}) => {
                     )
                 })}
             </div>
+            <Pagintaion isActiveSlide={isActiveSlide} isSlidesArrayLength={isSlidesArrayLength} setIsActiveSlide={setIsActiveSlide} slidesPreView={slidesPreView} setPrevIsActiveSlide={setPrevIsActiveSlide}/>
             <Navigation isActiveSlide={isActiveSlide} setIsActiveSlide={setIsActiveSlide} isSlidesArrayLength={isSlidesArrayLength} setPrevIsActiveSlide={setPrevIsActiveSlide} slidesPreView={slidesPreView}/>
         </div>
     )

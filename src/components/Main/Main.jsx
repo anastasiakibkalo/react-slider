@@ -25,6 +25,22 @@ const Main = () => {
             {
                 id: 5,
                 slidersName: "slide 5",
+            },
+            {
+                id: 6,
+                slidersName: "slide 6",
+            },
+            {
+                id: 7,
+                slidersName: "slide 7",
+            },
+            {
+                id: 8,
+                slidersName: "slide 8",
+            },
+            {
+                id: 9,
+                slidersName: "slide 9",
             }
         ], []
     )
@@ -33,7 +49,7 @@ const Main = () => {
         <div className={styles.container}>
             <div className={styles.wrapper}>
                 <h1 className={styles.title}>My slider</h1>
-                <Slider  sliders={sliders} slidesPreView={3} spaceBetween={20}/>
+                <Slider  sliders={sliders} slidesPreView={2} spaceBetween={20}/>
             </div>
         </div>
     )
